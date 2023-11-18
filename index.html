@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Toast</title>
+</head>
+<body>
+    <div class="buttons">
+        <button onclick="showToast(success)">success</button>
+        <button onclick="showToast(error)">error</button>
+        <button onclick="showToast(invalidMsg)">invalid</button>
+    </div>
+    <div id="tostBox"></div>
+    
+ <script>
+        let toastBox = document.getElementById('tostBox')
+
+
+    let success = ` <i class="fa-solid fa-circle-check"></i>  Successfully submitted`
+    let error = ` <i class="fa-solid fa-circle-xmark"></i>  Fix the error`
+    let invalidMsg = ` <i class="fa-solid fa-circle-exclamation"></i> Input value`
+
+
+    function showToast(toTx){
+        let tost = document.createElement("div");
+        tost.classList.add("toast");
+        tost.innerHTML= toTx;
+        toastBox.appendChild(tost);
+
+        if(toTx.includes("error")){
+            tost.classList.add('error')
+        }
+        if(toTx.includes("value")){
+            tost.classList.add("invalid")
+        }
+        setTimeout(()=>{
+            tost.remove()
+        },6000)
+    }
+</script>
+</body>
+</html>
